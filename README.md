@@ -31,6 +31,14 @@ Give it a company name — get back the company's full formal financial report. 
 - **As-reported values.** Amounts keep the source unit (thousands of CNY); turnover days are taken as reported by the source and never recomputed, so the output can be traced back to the filing line by line.
 - **Output.** A six-sheet standard Excel workbook (key indicators plus full statements) and a JSON summary, verified cell by cell against a reference company's published report.
 
+## Install
+
+```bash
+pip install git+https://github.com/ryangucheng2022-sudo/finreport-cli.git   # provides the `finreport` command
+```
+
+(openpyxl is installed automatically as the only dependency.) Or clone the repo and run `bin/finreport` directly.
+
 ## Quick start
 
 ```bash
@@ -54,6 +62,10 @@ finreport resolve 中国平安                    # name resolution only
 ## Verification
 
 Reconciled line-by-line against a published peer-monitoring workbook (a semiconductor name, 2025 Jan–Sep cumulative: revenue, gross profit, gross margin, deducted net profit and all three turnover-day figures matched exactly), and tested across industries including a consumer name and a financial conglomerate (bank/insurance statement structure).
+
+## Data-source contract
+
+The Eastmoney F10 field names this tool reads are pinned by sanitized fixtures under `tests/fixtures/` and by `tests/test_schema_drift.py`, which extracts the expected field set from the code itself: if upstream renames a field, the test suite fails instead of the report silently degrading. Fixtures use a synthetic company and round numbers — refresh them by re-capturing a response and replacing the values, keeping every field name.
 
 ## Tests
 
