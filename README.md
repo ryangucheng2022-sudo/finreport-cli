@@ -22,6 +22,15 @@ Give it a company name — get back the company's full formal financial report. 
 - **Consistent basis**: cumulative vs. single-quarter is always labeled; turnover days use the vendor's disclosed basis (verified against filings) instead of a locally recomputed approximation.
 - **Comparable out of the box**: current vs. prior-year period, YoY and percentage-point changes computed the same way for every company.
 
+## How it works
+
+- **Data sources.** Eastmoney's F10 financial-analysis endpoints provide the main indicators and the three statements; the quote-list endpoint resolves a company name to its stock code.
+- **Formal disclosures only.** The tool takes the latest formally published reporting period and the same period a year earlier. Forecasts, preliminary flashes, and announcements are never mixed into the statements.
+- **No guessing.** If a name matches several companies, resolution returns the candidates instead of picking one.
+- **Single-quarter derivation.** Quarterly figures are differenced from cumulative reports (e.g. Q3 alone = Jan–Sep minus Jan–Jun) and labeled as derived, never presented as originally disclosed.
+- **As-reported values.** Amounts keep the source unit (thousands of CNY); turnover days are taken as reported by the source and never recomputed, so the output can be traced back to the filing line by line.
+- **Output.** A six-sheet standard Excel workbook (key indicators plus full statements) and a JSON summary, verified cell by cell against a reference company's published report.
+
 ## Quick start
 
 ```bash
