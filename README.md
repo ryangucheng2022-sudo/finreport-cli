@@ -73,6 +73,10 @@ The Eastmoney F10 field names this tool reads are pinned by sanitized fixtures u
 python3 -m unittest discover -s tests -v   # 14 offline cases
 ```
 
+## CI
+
+A ready-to-enable GitHub Actions kit lives in `ci/`: copy `ci/ci.yml` to `.github/workflows/ci.yml`. It installs openpyxl and runs the full test suite, including the schema-drift contract tests.
+
 ## Version
 
 v1.0.0 — see [CHANGELOG.md](CHANGELOG.md).

@@ -73,6 +73,10 @@ finreport resolve 中国平安                    # 只做名称解析
 python3 -m unittest discover -s tests -v   # 14 个离线用例
 ```
 
+## 持续集成
+
+`ci/` 里备有 GitHub Actions 工具包：把 `ci/ci.yml` 复制到 `.github/workflows/ci.yml` 即可启用。内容为安装 openpyxl 并跑全套测试（含数据源契约的 drift 测试）。
+
 ## 版本
 
 v1.0.0 —— 见 [CHANGELOG.md](CHANGELOG.md)。
